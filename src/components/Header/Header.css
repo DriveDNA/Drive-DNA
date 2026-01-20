@@ -1,0 +1,86 @@
+/* Navbar styling */
+.navbar {
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  backdrop-filter: blur(6px);
+}
+.navbar .nav-link {
+  color: black !important;
+  margin-left: 15px;
+  transition: color 0.3s ease;
+}
+.navbar .nav-link:hover {
+  color: red !important;
+}
+.form-control {
+  width: 100%;
+}
+.nav-icons Button {
+  padding: 5px 5px;
+}
+.log-name-toggle{
+  background: rgb(93, 92, 92);
+  border: none;
+  margin-right: 5px;
+}
+.log-name-toggle:hover{
+  background-color: rgb(93, 92, 92);
+}
+ .log-name-toggle .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  background-color: rgb(118, 4, 4);
+}
+
+.cart-icon,
+.login-icon {
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.cart-out .bi{
+  margin:0px 5px;
+}
+@media (min-width: 1000px) {
+  .drop-hide {
+    display: none !important;
+  }
+  .cart-out {
+    display: none;
+  }
+  .login-out{
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .menu-drop {
+    display: none !important;
+  }
+  .cart-in {
+    display: none;
+  }
+  .login-in{
+    display: none;
+  }
+}
+.navbar-toggler {
+  padding: 0;
+}
+.navbar-toggler .cart-icon {
+  margin-left: 10px;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.cart-icon:hover {
+  color: #bb2d3b;
+}
+.login-icon:hover{
+  color: #bb2d3b;
+}

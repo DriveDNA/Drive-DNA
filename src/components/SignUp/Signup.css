@@ -1,0 +1,12 @@
+.s-form{
+    max-width: 600px;
+}
+.b-gray{
+    background-color: gray;
+  color: white;
+  border: none;
+}
+.b-gray:hover{
+     background-color: gray;
+  color: white;
+}

@@ -1,0 +1,20 @@
+/* footer */
+.flex-column .nav-link{
+  color: white;
+}
+.flex-column .nav-link:hover{
+  color:#dc3545;
+}
+
+.footer .row{
+ padding: 0px;
+}
+
+.bi{
+  margin-left: 10px;
+}
+
+
+hr{
+  opacity: 1;
+}

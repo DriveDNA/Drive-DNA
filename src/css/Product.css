@@ -1,0 +1,41 @@
+.c1 img {
+  object-fit: cover;
+  width: 100%;
+}
+.b-gray {
+  background-color: gray;
+  color: white;
+}
+
+#button-addon2{
+  border: none;
+}
+
+.m-image{
+  background-color: white;
+}
+
+
+.r-sec-col1{
+  background-color: rgb(53, 52, 52);
+  border: 1px solid rgb(107, 103, 103);
+  border-radius: 5px;
+}
+
+.r-sec-col{
+  /* background-color: rgb(53, 52, 52); */
+  background-color: #FFFFFF;
+  border: 1px solid rgb(107, 103, 103);
+  color: black;
+  border-radius: 5px;
+}
+.r-date{
+  font-size: 12px;
+}
+.r-com{
+  background: rgba(188, 125, 125, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16.4px);
+  -webkit-backdrop-filter: blur(16.4px);
+}
