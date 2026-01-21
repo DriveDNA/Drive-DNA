@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import "./Search.css";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const Search = () => {
   const [params] = useSearchParams();
   const query = params.get("q");
+  const [loading, setLoading] = useState(false);
 
   const [results, setResults] = useState([]);
 
@@ -12,16 +14,17 @@ export const Search = () => {
     if (!query) return;
 
     try {
+      setLoading(true);
       const res = await fetch(
-        `http://192.168.0.153:5000/products/search?q=${query}`
+        `${API_URL}/products/search?q=${encodeURIComponent(query)}`,
       );
       const data = await res.json();
       setResults(Array.isArray(data) ? data : []);
+      setLoading(false);
     } catch (error) {
       setResults([]);
     }
   }, [query]);
-
 
   useEffect(() => {
     fetchResults();
@@ -31,13 +34,14 @@ export const Search = () => {
     <>
       <h2 className="text-center mt-3">Search Results for: "{query}"</h2>
       <hr />
+      {loading && <p className="text-center">Searching...</p>}
       <div className="container1 card-group mt-4">
-        {results.length === 0 && <p>No products found</p>}
+        {!loading && results.length === 0 && <p>No products found</p>}
         {results.map((p) => (
           <div className="product" key={p._id}>
             <div className="card p-card m-2">
               <img
-                src={`http://192.168.0.153:5000${p.images[0]}`}
+                src={`${p.images[0]}`}
                 alt={p.name}
                 className="card-img-top p-img"
               />

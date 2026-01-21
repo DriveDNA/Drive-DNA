@@ -1,31 +1,53 @@
 import React, { useEffect, useState, useCallback } from "react";
 import toast from "react-hot-toast";
+import Spinner from "react-bootstrap/Spinner";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const Myorders = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let user = JSON.parse(localStorage.getItem("user"));
   user = user?.result;
 
-  // ✅ MEMOIZED FUNCTION
   const fetchMyOrders = useCallback(() => {
     if (!user?._id) return;
 
+    setLoading(true);
+
     fetch(`${API_URL}/orders/user/${user._id}`)
       .then((res) => res.json())
-      .then((data) => setOrders(data))
-      .catch((err) => console.error(err));
+      .then((data) => {
+        setOrders(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, [user?._id]);
 
-  // ✅ SAFE DEPENDENCY
   useEffect(() => {
     fetchMyOrders();
   }, [fetchMyOrders]);
 
   if (!user) {
     return <h5 className="text-center mt-4">Please login to view orders</h5>;
+  }
+
+  // ✅ SPINNER UI
+  if (loading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "60vh" }}
+      >
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   const cancelOrder = async (orderId) => {
@@ -86,6 +108,7 @@ export const Myorders = () => {
 
               <div className="d-flex justify-content-between">
                 <h6>Total: Rs. {order.grandTotal}</h6>
+
                 {order.orderStatus === "Placed" &&
                   Date.now() - new Date(order.createdAt).getTime() <
                     12 * 60 * 60 * 1000 && (

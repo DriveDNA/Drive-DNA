@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 const API_URL = process.env.REACT_APP_API_URL;
 
-
 export const Header = () => {
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
@@ -16,14 +15,16 @@ export const Header = () => {
 
   const navigate = useNavigate();
   let auth = localStorage.getItem("user");
- auth=auth?JSON.parse(auth).result:null
+  auth = auth ? JSON.parse(auth).result : null;
 
   const handleSearch = () => {
-    if (search.trim() !== "") {
-      navigate(`/search?q=${search}`);
-      closeNavbar();
-    }
-  };
+  if (search.trim() !== "") {
+    navigate(`/search?q=${encodeURIComponent(search)}`);
+    setShowSuggestions(false);
+    setSearch("");
+    closeNavbar();
+  }
+};
 
   const handleChange = async (e) => {
     const value = e.target.value;
@@ -35,9 +36,7 @@ export const Header = () => {
       return;
     }
 
-    const res = await fetch(
-      `${API_URL}/search/suggest?q=${value}`
-    );
+    const res = await fetch(`${API_URL}/search/suggest?q=${value}`);
     const data = await res.json();
     setSuggestions(data);
     setShowSuggestions(true);
@@ -83,9 +82,9 @@ export const Header = () => {
     localStorage.clear("user");
     navigate("/");
   };
-  const myorder =()=>{
-    navigate("/myorders")
-  }
+  const myorder = () => {
+    navigate("/myorders");
+  };
 
   return (
     <>
@@ -105,8 +104,7 @@ export const Header = () => {
               <span className="login-out">
                 <Dropdown align="end">
                   <Dropdown.Toggle className="log-name-toggle">
-                    {/* {auth.name} */}
-                    {" "}
+                    {/* {auth.name} */}{" "}
                     {auth.name.length > 10
                       ? auth.name.substring(0, 10) + "..."
                       : auth.name}
@@ -215,18 +213,24 @@ export const Header = () => {
               ))}
             </ul>
 
-            <form className="d-flex me-auto " role="search">
+            <form
+              className="d-flex me-auto "
+              role="search"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSearch();
+              }}
+            >
               <input
                 className="form-control me-2"
                 type="search"
-                id="searchInput"
                 placeholder="Search for products"
-                aria-label="Search"
                 autoComplete="off"
                 value={search}
                 onChange={handleChange}
                 onFocus={() => setShowSuggestions(true)}
               />
+
               <button
                 className="btn btn-danger"
                 id="searchBtn"
@@ -248,7 +252,7 @@ export const Header = () => {
                         navigate(`/product/${item._id}`);
                         setShowSuggestions(false);
                         setSearch("");
-                        closeNavbar()
+                        closeNavbar();
                       }}
                     >
                       {item.name.length > 35
@@ -273,8 +277,8 @@ export const Header = () => {
                         Logout
                       </Dropdown.Item>
                       <Dropdown.Item as="button" onClick={myorder}>
-                      My Orders
-                    </Dropdown.Item>
+                        My Orders
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </span>

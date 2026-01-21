@@ -7,7 +7,9 @@ export const About = () => {
     <>
       {/* ✅ SEO */}
       <Helmet>
-          <title>About | Drive DNA – Premium Car Accessories & Modification Parts</title>
+        <title>
+          About | Drive DNA – Premium Car Accessories & Modification Parts
+        </title>
 
         <meta
           name="description"
@@ -17,7 +19,10 @@ export const About = () => {
         <link rel="canonical" href="https://drivedna.in/about" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="About Drive DNA – Car Accessories Store" />
+        <meta
+          property="og:title"
+          content="About Drive DNA – Car Accessories Store"
+        />
         <meta
           property="og:description"
           content="Discover Drive DNA’s journey, values, and passion for premium car accessories and modification parts."
@@ -27,7 +32,10 @@ export const About = () => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Drive DNA – Premium Car Accessories" />
+        <meta
+          name="twitter:title"
+          content="About Drive DNA – Premium Car Accessories"
+        />
         <meta
           name="twitter:description"
           content="Drive DNA provides premium car accessories and modification parts designed for style, comfort, and performance."
@@ -39,21 +47,28 @@ export const About = () => {
           <h1 className="text-color">Welcome to Drive DNA!!</h1>
 
           <p>
-            We believe your car is more than just a machine – it’s a reflection of
-            your personality. Drive DNA provides the full spectrum of automotive
-            expression, from timeless elegance to everyday comfort. We deliver
-            products that help you express your unique drive story – because when
-            it’s in your DNA, it shows on the road.
+            We believe your car is more than just a machine – it’s a reflection
+            of your personality. Drive DNA provides the full spectrum of
+            automotive expression, from timeless elegance to everyday comfort.
+            We deliver products that help you express your unique drive story –
+            because when it’s in your DNA, it shows on the road.
           </p>
 
           <h2 className="text-color">Our Story</h2>
 
           <p>
-            Founded with a passion for automotive excellence and design
-            innovation, Drive DNA was created to redefine the way people
-            experience their vehicles. Our journey began with a single vision –
-            to combine performance, luxury, and personal expression into every
-            drive.
+            Founded with a passion by Arjun Kumar Ghai for automotive excellence
+            and design innovation, Drive DNA was created to redefine the way
+            people experience their vehicles. Drive DNA began with a simple idea
+            — car lovers shouldn’t have to compromise between quality, design,
+            and convenience. With a strong focus on careful product selection,
+            customer experience, and authenticity, the store brings together
+            products that enhance comfort, style, and everyday driving. Rather
+            than creating products in-house, Drive DNA partners with reliable
+            and established brands, curating a collection that meets strict
+            standards of quality, durability, and design. Every product listed
+            is chosen to help customers personalize their vehicles with
+            confidence.
           </p>
 
           <h2 className="text-color">Our Core Values</h2>
@@ -64,8 +79,8 @@ export const About = () => {
           </p>
 
           <p>
-            <span className="p-bold">Customer Focus:</span> We create and deliver
-            experiences that elevate every journey.
+            <span className="p-bold">Customer Focus:</span> We create and
+            deliver experiences that elevate every journey.
           </p>
 
           <p>
